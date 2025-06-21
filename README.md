@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # codewarios
 
 A new Flutter project.
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# mobile
+>>>>>>> 7969352f0762b2550f30a62309f934b4571d9c98

@@ -16,7 +16,10 @@ class StudentHomeScreen extends StatelessWidget {
         title: Row(
           children: [
             const SizedBox(width: 8),
-            const Text('Bibliothèque', style: TextStyle(color: Colors.white, fontSize: 20)),
+            const Text(
+              'Bibliothèque',
+              style: TextStyle(color: Colors.white, fontSize: 20),
+            ),
             const SizedBox(width: 80),
             IconButton(
               icon: const Icon(Icons.notifications, color: Colors.white),
@@ -53,7 +56,9 @@ class StudentHomeScreen extends StatelessWidget {
               accountEmail: Text(user.email),
             ),
             _drawerItem(Icons.home, 'Accueil', () {}),
-            _drawerItem(Icons.library_books, 'Bibliothèque', () {}),
+            _drawerItem(Icons.library_books, 'Bibliothèque', () {
+              Navigator.pop(context);
+              Navigator.pushNamed(context, '/bibliotheque');}),
             _drawerItem(Icons.forum, 'Forum', () {}),
             _drawerItem(Icons.trending_up, 'Progression', () {}),
             _drawerItem(Icons.settings, 'Paramètres', () {}),
@@ -74,10 +79,7 @@ class StudentHomeScreen extends StatelessWidget {
             // Salutation dynamique
             Text(
               'Bonjour, ${user.name} !',
-              style: const TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 24),
 
@@ -94,7 +96,9 @@ class StudentHomeScreen extends StatelessWidget {
                   icon: Icons.library_books,
                   label: 'Bibliothèque',
                   color: Colors.blue.shade100,
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, '/bibliotheque');
+                  },
                 ),
                 _ShortcutCard(
                   icon: Icons.trending_up,
@@ -106,7 +110,7 @@ class StudentHomeScreen extends StatelessWidget {
                   icon: Icons.edit,
                   label: 'Exercices',
                   color: Colors.orange.shade100,
-                  onTap: () {},
+                  onTap: () {Navigator.pushNamed(context, '/exercices');},
                 ),
                 _ShortcutCard(
                   icon: Icons.forum,
@@ -141,17 +145,20 @@ class StudentHomeScreen extends StatelessWidget {
                   return _ResourceCard(
                     title: res['title'],
                     description: res['description'],
-                    icon: res['type'] == 'PDF'
-                        ? Icons.picture_as_pdf
-                        : res['type'] == 'Vidéo'
+                    icon:
+                        res['type'] == 'PDF'
+                            ? Icons.picture_as_pdf
+                            : res['type'] == 'Vidéo'
                             ? Icons.play_circle_fill
                             : Icons.edit,
-                    iconColor: res['type'] == 'PDF'
-                        ? Colors.red
-                        : res['type'] == 'Vidéo'
+                    iconColor:
+                        res['type'] == 'PDF'
+                            ? Colors.red
+                            : res['type'] == 'Vidéo'
                             ? Colors.blue
                             : Colors.orange,
-                    actionLabel: res['isDownloaded'] ? 'Consulter' : 'Télécharger',
+                    actionLabel:
+                        res['isDownloaded'] ? 'Consulter' : 'Télécharger',
                     onAction: () {},
                   );
                 },
@@ -198,7 +205,10 @@ class _ShortcutCard extends StatelessWidget {
               const SizedBox(height: 12),
               Text(
                 label,
-                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
               ),
             ],
           ),

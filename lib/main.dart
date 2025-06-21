@@ -16,6 +16,8 @@ import 'screens/notifications_screen.dart';
 import 'screens/teacher/student_tracking_screen.dart';
 import 'screens/teacher/student_detail_screen.dart';
 import 'models/user_model.dart';
+import 'screens/student/bibliotheque.dart';
+import 'screens/student/exercices_screen.dart';
 
 // Clé globale pour la navigation depuis n'importe où
 final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -88,6 +90,31 @@ class MyApp extends StatelessWidget {
           '/my-courses': (context) => const MyCoursesScreen(),
           '/download-manager': (context) => const DownloadManagerScreen(),
           '/forum': (context) => const ForumScreen(),
+          '/bibliotheque': (context) {
+            // Remplace par ta logique utilisateur réelle si besoin
+            final user = User(
+              id: '1',
+              email: 'alice@example.com',
+              password: '', // ou un mot de passe fictif
+              name: 'Alice',
+              role: UserRole.student.value,
+              createdAt: DateTime.now(),
+              updatedAt: DateTime.now(),
+            );
+            return BibliothequeScreen(user: user, isTeacher: false);
+          },
+          '/exercices': (context) {
+            final user = User(
+              id: '1',
+              email: 'alice@example.com',
+              password: '',
+              name: 'Alice',
+              role: UserRole.student.value,
+              createdAt: DateTime.now(),
+              updatedAt: DateTime.now(),
+            );
+            return ExercicesScreen(user: user);
+          },
           '/notifications': (context) => const NotificationsScreen(),
           '/teacher/student-tracking': (context) {
             final args =
